@@ -16,21 +16,21 @@
   <body ng-controller="ProductosCtrl as producto">
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="gema in producto.productos">
+        <section ng-controller="PanelCtrl as panel">
           <div class="panel">
-            <h1 ng-show="tab === 1">{{gema.nombre}}</h1>
-            <h3 ng-show="tab === 2">
-              <em class="pull-right">{{gema.precio | currency:'€'}}</em>
-            </h3>
+            <h1 ng-show="panel.isTab(1)">{{gema.nombre}}</h1>
+              <h3 ng-show="panel.isTab(2)">
+                <em class="pull-right">{{gema.precio | currency:'€'}}</em>
+              </h3>
           </div>
-          <section ng-controller="PanelCtrl as panel">
-            <ul class="nav nav-pills">
-              <li ng-class="{active:panel.isTab(1)}">
-                <a href ng-click="panel.selectTab(1)">Nombre</a>
-              </li>
-              <li ng-class="{active:panel.isTab(2)}">
-                <a href ng-click="panel.selectTab(2)">Precio</a></li>
-            </ul>
-          </section>
+          <ul class="nav nav-pills">
+            <li ng-class="{active:panel.isTab(1)}">
+              <a href ng-click="panel.selectTab(1)">Nombre</a>
+            </li>
+            <li ng-class="{active:panel.isTab(2)}">
+              <a href ng-click="panel.selectTab(2)">Precio</a></li>
+          </ul>
+        </section>
       </li>
     </ul>
 
