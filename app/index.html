@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-ES">
+<html lang="es-ES" ng-app="demo">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +9,37 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
   </head>
-  <body>
-    <p>Hola Mundo!</p>
+  <body ng-controller="ProductosCtrl as producto">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="gema in producto.productos">
+          <div class="panel">
+            <h1 ng-show="tab === 1">{{gema.nombre}}</h1>
+            <h3 ng-show="tab === 2">
+              <em class="pull-right">{{gema.precio | currency:'€'}}</em>
+            </h3>
+          </div>
+          <section ng-controller="PanelCtrl as panel">
+            <ul class="nav nav-pills">
+              <li ng-class="{active:panel.isTab(1)}">
+                <a href ng-click="panel.selectTab(1)">Nombre</a>
+              </li>
+              <li ng-class="{active:panel.isTab(2)}">
+                <a href ng-click="panel.selectTab(2)">Precio</a></li>
+            </ul>
+          </section>
+      </li>
+    </ul>
+
     <!-- bower:js -->
     <!-- endbower -->
     <!-- inject:js -->
-    <script src="/scripts/main.js"></script>
+    <script src="./lib/angular/angular.min.js"></script>
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
+    <script src="./scripts/main.js"></script>
     <!-- endinject -->
   </body>
 </html>
