@@ -2,7 +2,8 @@
   "name": "demo_angular",
   "version": "0.0.1",
   "description": "Ejemplo de desarrollo de aplicación web con JavaScript",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "angular": "^1.5.3",
     "bootstrap": "^3.3.6"
   }
